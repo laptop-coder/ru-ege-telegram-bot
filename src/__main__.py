@@ -1,3 +1,5 @@
+from datetime import date
+
 from telegram import Update
 from telegram import Bot
 from telegram.ext import (
@@ -7,8 +9,11 @@ from telegram.ext import (
     filters,
 )
 
+from consts import days_of_week
+from enums import Category
+from get_info import get_info
+from templates import ru_ege_info_message_template
 import config
-import db
 
 
 bot = Bot(config.BOT_TOKEN)
@@ -17,8 +22,23 @@ bot = Bot(config.BOT_TOKEN)
 async def send_ru_ege_info_message(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
-    ru_ege_info_message = """Hello!"""
-    await bot.send_message(config.CHANNEL_ID, ru_ege_info_message)
+    current_date = date.today()
+    formatted_date = (
+        current_date.strftime("%d.%m.%Y")
+        + ", "
+        + days_of_week[current_date.isoweekday()]
+    )
+
+    info = get_info()
+    ru_ege_info_message = ru_ege_info_message_template.render(
+        date=formatted_date,
+        orthoepy=info[Category.orthoepy.name],
+        paronyms=info[Category.paronyms.name],
+        phraseological_unit=info[Category.phraseological_unit.name],
+        unstressed_at_root=info[Category.unstressed_at_root.name],
+    )
+
+    await bot.send_message(config.CHANNEL_ID, ru_ege_info_message, parse_mode="HTML")
 
 
 def main():
