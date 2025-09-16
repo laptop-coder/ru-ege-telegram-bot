@@ -1,24 +1,24 @@
 CREATE table if not exists orthoepy (
-    word_info TEXT NOT NULL,
+    info TEXT NOT NULL,
     used INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE table if not exists paronyms (
-    words TEXT NOT NULL,
+    info TEXT NOT NULL,
     used INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE table if not exists phraseological_units (
-    phraseological_unit TEXT NOT NULL,
+CREATE table if not exists phraseological_unit (
+    info TEXT NOT NULL,
     used INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE table if not exists unstressed_at_root (
-    words TEXT NOT NULL,
+    info TEXT NOT NULL,
     used INTEGER NOT NULL DEFAULT 0
 );
 
-INSERT INTO orthoepy(word_info) VALUES
+INSERT INTO orthoepy (info) VALUES
 ('аэропОрты, им. п. мн. ч. сущ. аэропОрт'),
 ('бАнты, им. п. мн. ч. сущ. бант'),
 ('бОроду, вин. п. ед. ч. сущ. бородА'),
@@ -223,7 +223,7 @@ INSERT INTO orthoepy(word_info) VALUES
 ('надОлго'),
 ('ненадОлго');
 
-INSERT INTO paronyms (words) VALUES
+INSERT INTO paronyms (info) VALUES
 ('Абонемент – абонент'),
 ('Авторитарный – авторитетный'),
 ('Адресант – адресат'),
@@ -369,7 +369,7 @@ INSERT INTO paronyms (words) VALUES
 ('Эффективность – эффектность'),
 ('Яблочный – яблоневый');
 
-INSERT INTO phraseological_units (phraseological_unit) VALUES
+INSERT INTO phraseological_unit (info) VALUES
 ('альфа и омега'),
 ('без оглядки'),
 ('без устали'),
@@ -657,7 +657,7 @@ INSERT INTO phraseological_units (phraseological_unit) VALUES
 ('чувствовать себя'),
 ('язык не повернулся');
 
-INSERT INTO unstressed_at_root (words) VALUES
+INSERT INTO unstressed_at_root (info) VALUES
 ('абитуриент'),
 ('абонемент'),
 ('абрикос, абрикосовый'),
