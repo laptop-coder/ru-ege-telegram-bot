@@ -1,0 +1,18 @@
+services:
+  bot:
+    build:
+      context: .
+    container_name: ru-ege-telegram-bot
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/db:/bot/data/db
+    environment:
+      - PATH_TO_DB=/bot/data/db/db.sqlite3
+      - PATH_TO_INITIAL_SQL_QUERIES=/bot/src/db.sql
+    env_file:
+      - .env
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: .
