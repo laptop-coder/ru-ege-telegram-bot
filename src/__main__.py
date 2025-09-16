@@ -8,6 +8,7 @@ from telegram.ext import (
 )
 
 import config
+import db
 
 
 bot = Bot(config.BOT_TOKEN)

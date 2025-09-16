@@ -8,7 +8,7 @@ services:
       - ./data/db:/bot/data/db
     environment:
       - PATH_TO_DB=/bot/data/db/db.sqlite3
-      - PATH_TO_INITIAL_SQL_QUERIES=/bot/src/db.sql
+      - PATH_TO_INITIAL_SQL_QUERIES=/bot/src/sql/init.sql
     env_file:
       - .env
     restart: unless-stopped
