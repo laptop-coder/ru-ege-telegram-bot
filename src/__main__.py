@@ -15,6 +15,7 @@ from get_info import get_info
 from templates import ru_ege_info_message_template
 import config
 from set_all_records_in_table_unused import set_all_records_in_table_unused
+from get_one_table_info import get_one_table_info
 
 
 bot = Bot(config.BOT_TOKEN)
@@ -35,6 +36,7 @@ async def send_ru_ege_info_message(
     for item in Category:
         if info[item.name] is None:
             set_all_records_in_table_unused(item)
+            info[item.name] = get_one_table_info(item)
 
     ru_ege_info_message = ru_ege_info_message_template.render(
         date=formatted_date,

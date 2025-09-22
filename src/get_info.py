@@ -1,6 +1,7 @@
 import db
 import config
 from enums import Category
+from set_record_used import set_record_used
 
 
 def get_info():
@@ -14,4 +15,8 @@ def get_info():
             Category.phraseological_unit.name: data[2],
             Category.unstressed_at_root.name: data[3],
         }
+
+        for item in Category:
+            set_record_used(item, info[item.name])
+
         return info
