@@ -16,4 +16,4 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: .
+          path: src
