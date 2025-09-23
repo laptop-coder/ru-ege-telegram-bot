@@ -1,8 +1,7 @@
 services:
   bot:
-    build:
-      context: .
-    container_name: ru-ege-telegram-bot-dev
+    image: laptopcoder/ru-ege-telegram-bot:latest
+    container_name: ru-ege-telegram-bot-prod
     volumes:
       - /etc/localtime:/etc/localtime
       - ./data/db:/bot/data/db
@@ -12,8 +11,4 @@ services:
       - PATH_TO_GET_INFO_SQL_QUERIES=/bot/src/sql/get_info.sql
     env_file:
       - .env
-    restart: unless-stopped
-    develop:
-      watch:
-        - action: rebuild
-          path: src
+    restart: always
