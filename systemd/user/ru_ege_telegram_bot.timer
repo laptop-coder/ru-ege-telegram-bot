@@ -1,0 +1,8 @@
+[Unit]
+Description=Timer for the ru_ege_telegram_bot.service
+Requires=ru_ege_telegram_bot.service
+
+[Timer]
+Unit=ru_ege_telegram_bot.service
+OnCalendar=*-*-* 17:00:00
+AccuracySec=30seconds
