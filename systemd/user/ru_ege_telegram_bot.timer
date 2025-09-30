@@ -4,5 +4,6 @@ Requires=ru_ege_telegram_bot.service
 
 [Timer]
 Unit=ru_ege_telegram_bot.service
-OnCalendar=*-*-* 17:00:00
+# 14:00 UTC (17:00 MSK) +- 30 seconds
+OnCalendar=*-*-* 14:00:00
 AccuracySec=30seconds
